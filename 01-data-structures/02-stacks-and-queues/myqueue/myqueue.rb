@@ -21,6 +21,8 @@ class MyQueue
 
   def dequeue
     @queue.slice!(0)
+    @head = @queue[0]
+    @tail = @queue[-1]
   end
 
   def empty?
