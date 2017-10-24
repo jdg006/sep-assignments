@@ -15,6 +15,18 @@ RSpec.describe MyQueue, type: Class do
       expect(q.tail).to eq "Ben"
     end
   end
+  
+   describe "#enqueue further tests" do
+    it "adds an item to the end the queue" do
+      q.enqueue("Rob")
+      q.enqueue("jon")
+      q.enqueue("Moe")
+      
+      expect(q.head).to eq "Rob"
+      expect(q.tail).to eq "Moe"
+      
+    end
+  end
 
   describe "#dequeue" do
     it "removes an item from the front of the queue" do
