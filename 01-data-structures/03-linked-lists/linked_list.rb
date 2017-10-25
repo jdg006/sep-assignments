@@ -81,4 +81,28 @@ class LinkedList
     @head = @head.next
     temp
   end
+  
+  def find(node)
+    temp = @head
+    while temp != node 
+      if temp.next == nil and temp != node
+        return nil
+      else
+        temp = temp.next
+     end
+    end 
+    temp
+  end
+  
+  def find_node_where(val)
+    temp = @head
+    while temp.val != val 
+      if temp.next == nil and temp.val != val
+        return nil
+      else
+        temp = temp.next
+     end
+    end 
+    temp
+  end
 end
