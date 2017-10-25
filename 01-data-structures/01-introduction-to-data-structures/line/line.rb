@@ -13,16 +13,7 @@ class Line
   end
 
   def leave(person)
-    i = 0
-    while i<members.length
-      if members[i] == person
-        members.delete_at(i)
-        return
-      else
-        i+=1
-      end
-    end
-    return "Person Not Found"
+    members.delete(person)
   end
 
   def front
@@ -38,29 +29,13 @@ class Line
   end
 
   def search(person)
-    i = 0
-    while i<members.length
-      if members[i] == person
-        return members[i]
-      else
-        i+=1 
-      end
-    end
-    return 
+    members.select{|a| a ==person}[0]
   end
 
   private
 
   def index(person)
-    i = 0
-    while i<members.length
-      if members[i] == person
-        return i
-      else
-        i+=1 
-      end
-    end
-    return "Person Not Found"
+    members.index(person)
   end
 
 end
