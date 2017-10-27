@@ -15,6 +15,18 @@ RSpec.describe MyQueue, type: Class do
       expect(q.tail).to eq "Ben"
     end
   end
+  
+   describe "#enqueue further tests" do
+    it "adds an item to the end the queue" do
+      q.enqueue("Rob")
+      q.enqueue("jon")
+      q.enqueue("Moe")
+      
+      expect(q.head).to eq "Rob"
+      expect(q.tail).to eq "Moe"
+      
+    end
+  end
 
   describe "#dequeue" do
     it "removes an item from the front of the queue" do
@@ -31,9 +43,15 @@ RSpec.describe MyQueue, type: Class do
       q.enqueue("Ben")
       expect(q.head).to eq "Rob"
       expect(q.tail).to eq "Ben"
+      q.enqueue("Moe")
+      expect(q.head).to eq "Rob"
+      expect(q.tail).to eq "Moe"
+      q.dequeue
+      expect(q.head).to eq "Ben"
+      expect(q.tail).to eq "Moe"
     end
   end
-
+  
   describe "#empty?" do
     it "returns true if the queue is emtpy" do
       expect(q.empty?).to eq true
