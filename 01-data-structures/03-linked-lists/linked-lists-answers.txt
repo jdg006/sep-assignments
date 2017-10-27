@@ -1,0 +1,24 @@
+Memory questions
+
+1.	The processor will first look in the registers, then the cache, then in memory, and finally it will check persistent storage.
+2.	2 billion memory locations
+3.	The difference between volatile and persistent memory is that persistent memory can retain stored data while not connected to a power source whereas volatile memory will reset every time the computer is turned off. Both types exist in our memory pyramid, but persistent memory is at the very bottom of the pyramid. 
+
+
+Assignment 3 questions
+
+1. What is Spatial Locality and why does it benefit performance?
+    spatial locality is the use of data that are stored in close proximity to one another. 
+    It benefits performance by reducing the number of times that the cache must retrieve data from RAM.
+2. Compare the performance of an Array to a Linked List using the Benchmark module.
+ Compare the time it takes to create a 10,000 item Array to appending 10,000 items to a Linked List.
+ 
+add 10,000 elements to each list
+ LinkedList: 0.000000   0.000000   0.000000 (  0.005214)
+ Array:      0.010000   0.000000   0.010000 (  0.001576)
+access 5000th element
+ LinkedList: 0.000000   0.000000   0.000000 (  0.000396)
+ Array:      0.000000   0.000000   0.000000 (  0.000002)
+removes 5000th element
+ LinkedList: 0.000000   0.000000   0.000000 (  0.000237)
+ Array:      0.000000   0.000000   0.000000 (  0.000006)
