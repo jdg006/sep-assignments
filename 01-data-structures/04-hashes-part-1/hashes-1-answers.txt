@@ -1,0 +1,5 @@
+The larger the array gets the more the array will grow by with each collision. 
+This will create ever increasing amounts of unused space each time there is a collision.
+This space will take an ever incresing amount of time to allocate memory for and the strain on 
+memory will increase throughout the life of the program.
+
