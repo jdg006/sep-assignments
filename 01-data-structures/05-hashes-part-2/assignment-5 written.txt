@@ -1,0 +1,22 @@
+Robin Hood hashing:
+Robin Hood hashing is a type of double hashing in which an item inside of the hash may be displaced by another if the "probe count"
+is higher for one item than the other. If there is a collision you calculate how many steps away from the index each item will have
+to go and the one that will have to go further will be placed in the originally calculated index and the other will be moved via probe
+to its new index.
+
+2-choice hashing:
+two indexes are calculated using two different hashing functions and the item is placed in the bucket that has fewer items in it. If 
+both buckets have the same number of items in them then the item defaults to the index of the bucket that was created by whichever 
+hash function you designate as the primary function.
+
+hopscotch hashing:
+when hashing an item you attempt to place the item inside of the bucket that is at the calculated index. If that bucket is full then a 
+"neighborhood" or range of buckets is created and you attempt to place an item within the neighborhood of buckets. If every bucket in the
+neighborhood is filled then you find the nearest open index and displace buckets within the neighborhood to make room for the empty bucket.
+Once the empty bucket is within the neighborhood then the item is placed into that bucket.
+
+My collision strategy:
+When a collision is detected the colliding object is stored within the object that was originally inside of the array at the calculated index.
+Upon lookup if the object at the calculated index is not the one you are looking for then you look inside the object to see if it contains the 
+object that you are looking for. Essentially, instead of using a linked list as your bucket you make the first object the bucket and store the 
+other colliding objects within it.

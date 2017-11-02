@@ -34,7 +34,7 @@ RSpec.describe OpenAddressing, type: Class do
       hash = OpenAddressing.new(4)
       hash["key"] = "value"
       expect(hash.size).to eq 4
-      hash["key"] = "second value"
+      hash["keys"] = "second value"
       expect(hash.size).to eq 4
     end
 
@@ -42,7 +42,7 @@ RSpec.describe OpenAddressing, type: Class do
       hash = OpenAddressing.new(1)
       hash["key"] = "value"
       expect(hash.size).to eq 1
-      hash["key"] = "second value"
+      hash["keys"] = "second value"
       expect(hash.size).to eq 2
     end
 
