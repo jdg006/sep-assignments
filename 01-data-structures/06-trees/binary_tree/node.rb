@@ -5,5 +5,10 @@ class Node
   attr_accessor :right
 
   def initialize(title, rating)
+    @title = title
+    @rating = rating
+    @left = nil
+    @right = nil
   end
+  
 end
