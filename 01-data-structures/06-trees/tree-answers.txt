@@ -1,0 +1,33 @@
+1.
+
+#<Node:0x00000001fbe860>
+#<Node:0x00000001fbe900>
+#<Node:0x00000001fbe7e8>
+#<Node:0x00000001fbe770>
+#<Node:0x00000001fbe6f8>
+binary_tree
+#<Node:0x00000001fbe900>
+#<Node:0x00000001fbe770>
+#<Node:0x00000001fbe6f8>
+#<Node:0x00000001fbe680>
+#<Node:0x00000001fbe608>
+#<Node:0x00000001fbe658>
+#<Node:0x00000001fbe630>
+
+2.
+
+ add 10,000 elements to each tree
+Heap:  13.040000   0.020000  13.060000 ( 13.069492)
+Binary tree:   1.410000   0.010000   1.420000 (  1.429578)
+Find 5000th entry
+Heap:   0.000000   0.000000   0.000000 (  0.006105)
+Binary tree:   0.000000   0.000000   0.000000 (  0.003140)
+delete 5000th element
+Heap:   0.020000   0.000000   0.020000 (  0.014021)
+Binary tree:   0.000000   0.000000   0.000000 (  0.004675)
+heap
+
+You would use a heap when you wanted either the highest or lowest value in the tree
+to be able to be accessed quickly. 
+
+You would use a binary tree to quickly sort and access data.
