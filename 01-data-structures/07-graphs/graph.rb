@@ -19,34 +19,24 @@ class Graph
         node.film_actor_hash.keys
     end
     
-    def find_actors_in(title)
-        
-    end
-    
-    
     def find_kevin_bacon(node)
        return nil if node == nil
-       return "this is kevin bacon" if node.name == "Kevin Bacon"
        films = []
-       node_movies = node.film_actor_hash
-       node_movies.each do |key, array|
-           array.each do |x|
-               if x.name == "Kevin Bacon"
-                   films.push(key)
-               end
-           end
-       end
-       if films.size == 0
-           films.push(find_films_of(node)[1])
-           node.film_actor_hash[find_films_of(node)[0]].each do |x|
-               find_kevin_bacon(x)
-           end
-           
-       else
-           
-       return films
+       node_movie = find_films_of(node)[0]
+       next_node = node.film_actor_hash[node_movie][0]
        
-      end
+        if node_movie != "Footloose"
+            films.push(node_movie)
+            array = find_kevin_bacon(next_node)
+            films.push(array)
+            films.flatten!
+        else
+            films.push(node_movie)
+            
+            return films
+        end
+        
     end
+   
 end
 

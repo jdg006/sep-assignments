@@ -5,22 +5,6 @@ require_relative 'node'
 
 RSpec.describe Graph, type: Class do
   
-  let (:kevin) {Hash.new}
-  let (:john)  {Hash.new}
-  let (:sarah) {Hash.new}
-  let (:chris) {Hash.new}
-  let (:matthew) {Hash.new}
-  let (:ellen)  {Hash.new}
-  let (:anne) {Hash.new}
-  let (:dennis) {Hash.new}
-  let (:ashton) {Hash.new}
-  let (:steve)  {Hash.new}
-  let (:harvey) {Hash.new}
-  let (:robert) {Hash.new}
-  let (:michael) {Hash.new}
-  let (:tim)  {Hash.new}
-  let (:samuel) {Hash.new}
-  
   let (:graph) { Graph.new }
   let (:kevin_bacon) { Node.new("Kevin Bacon")}
   let (:john_lithgow) {Node.new("John Lithgow")}
@@ -37,6 +21,65 @@ RSpec.describe Graph, type: Class do
   let (:michael_madsen) {Node.new("Michael Madsen")}
   let (:tim_roth) {Node.new("Tim Roth")}
   let (:samuel_jackson) {Node.new("Samuel Jackson")}
+  let (:kurt_russell) {Node.new("Kurt Russell")}
+  let (:bruce_dern) {Node.new("Bruce Dern")}
+  
+  let (:kevin) {{
+      "Footloose" => [john_lithgow, sarah_jessica_parker, chris_penn]
+    }}
+  let (:john) {{
+      "Footloose" => [kevin_bacon, chris_penn, sarah_jessica_parker],
+      "Interstellar" => [matthew_mcConaughey, ellen_burstyn, anne_hathaway]
+    }}
+  let (:sarah) {{
+      "Footloose" => [kevin_bacon, chris_penn, john_lithgow],
+      "Smart People" => [dennis_quaid, ashton_holmes, robert_haley]
+    }}
+  let (:chris) {{
+      "Footloose" => [kevin_bacon, john_lithgow, sarah_jessica_parker],
+      "Reservior Dogs" => [steve_buschemi, harvey_keitel, michael_madsen]
+    }}
+  let (:matthew) {{
+      "Interstellar" => [john_lithgow, ellen_burstyn, anne_hathaway]
+    }}
+  let (:ellen)  {{
+      "Interstellar" => [john_lithgow, matthew_mcConaughey, anne_hathaway]
+    }}
+  let (:anne) {{
+      "Interstellar" => [john_lithgow, matthew_mcConaughey, ellen_burstyn]
+    }}
+  let (:dennis) {{
+      "Smart People" => [sarah_jessica_parker, ashton_holmes, robert_haley]
+    }}
+  let (:ashton) {{
+      "Smart People" => [sarah_jessica_parker, dennis_quaid, robert_haley]
+    }}
+  let (:steve) {{
+      "Reservior Dogs" => [chris_penn, harvey_keitel, michael_madsen]
+    }}
+  let (:harvey) {{
+      "Reservior Dogs" => [chris_penn, steve_buschemi, michael_madsen],
+      "Pulp Fiction" => [samuel_jackson, tim_roth]
+    }}
+  let (:robert) {{
+      "Smart People" => [sarah_jessica_parker, ashton_holmes, dennis_quaid]
+    }}
+  let (:michael) {{
+      "Reservior Dogs" => [steve_buschemi, harvey_keitel, chris_penn]
+    }}
+  let (:tim)  {{
+      "Pulp Fiction" => [harvey_keitel, samuel_jackson],
+      "The Hateful eight" => [kurt_russell, bruce_dern]
+    }}
+  let (:samuel) {{
+      "Pulp Fiction" => [harvey_keitel, tim_roth]
+    }}
+  let (:kurt) {{
+      "The Hateful eight" => [tim_roth, bruce_dern]
+    }}
+  let (:bruce) {{
+      "The Hateful eight" => [tim_roth, kurt_russell]
+    }}
   
   describe "#insert(data)" do
     
@@ -65,112 +108,50 @@ RSpec.describe Graph, type: Class do
    end
    
    describe "find_kevin_bacon" do
-     it "returns 'this is kevin bacon' if searched node is kevin bacon" do 
-       kevin = {"Footloose" => [john_lithgow, sarah_jessica_parker, chris_penn]}
-       kevin_bacon.film_actor_hash = kevin
-       graph.insert(kevin_bacon)
-       expect(graph.find_kevin_bacon(kevin_bacon)).to eq []
-     end
      
      it "properly finds the movies that connect the starting node to Kevin Bacon" do 
-       kevin = {
-      "Footloose" => [john_lithgow, sarah_jessica_parker, chris_penn]
-    }
-  
-    john = {
-      "Footloose" => [kevin_bacon, chris_penn, sarah_jessica_parker],
-      "Interstellar" => [matthew_mcConaughey, ellen_burstyn, anne_hathaway]
-    }
-    
-    matthew = {
-      "Interstellar" => [john_lithgow, ellen_burstyn, anne_hathaway]
-    }
-    
-    ellen = {
-      "Interstellar" => [john_lithgow, matthew_mcConaughey, anne_hathaway]
-    }
-    
-    anne = {
-      "Interstellar" => [john_lithgow, matthew_mcConaughey, ellen_burstyn]
-    }
-    
-    sarah = {
-      "Footloose" => [kevin_bacon, chris_penn, john_lithgow],
-      "Smart People" => [dennis_quaid, ashton_holmes, robert_haley]
-    }
-    
-    dennis = {
-      "Smart People" => [sarah_jessica_parker, ashton_holmes, robert_haley]
-    }
-    ashton = {
-      "Smart People" => [sarah_jessica_parker, dennis_quaid, robert_haley]
-    }
-    robert = {
-      "Smart People" => [sarah_jessica_parker, ashton_holmes, dennis_quaid]
-    }
-    
-    chris = {
-      "Footloose" => [kevin_bacon, john_lithgow, sarah_jessica_parker],
-      "Reservior Dogs" => [steve_buschemi, harvey_keitel, michael_madsen]
-    }
-    
-    steve = {
-      "Reservior Dogs" => [chris_penn, harvey_keitel, michael_madsen]
-    }
-    
-    harvey = {
-      "Reservior Dogs" => [steve_buschemi, chris_penn, michael_madsen],
-      "Pulp Fiction" => [samuel_jackson, tim_roth]
-    }
-    
-    michael = {
-      "Reservior Dogs" => [steve_buschemi, harvey_keitel, chris_penn]
-    }
-    
-    samuel = {
-      "Pulp Fiction" => [harvey_keitel, tim_roth]
-    }
-    
-    tim = {
-      "Pulp Fiction" => [harvey_keitel, samuel_jackson]
-    }
-    
-  kevin_bacon.film_actor_hash = kevin
-  john_lithgow.film_actor_hash = john
-  sarah_jessica_parker.film_actor_hash = sarah
-  chris_penn.film_actor_hash = chris
-  matthew_mcConaughey.film_actor_hash = matthew
-  ellen_burstyn.film_actor_hash = ellen
-  anne_hathaway.film_actor_hash = anne
-  dennis_quaid.film_actor_hash = dennis
-  ashton_holmes.film_actor_hash = ashton
-  steve_buschemi.film_actor_hash = steve
-  harvey_keitel.film_actor_hash = harvey
-  robert_haley.film_actor_hash = robert
-  michael_madsen.film_actor_hash = michael
-  tim_roth.film_actor_hash = tim
-  samuel_jackson.film_actor_hash = samuel
-       
-  graph.insert(kevin_bacon)
-  graph.insert(john_lithgow)
-  graph.insert(sarah_jessica_parker)
-  graph.insert(chris_penn)
-  graph.insert(matthew_mcConaughey)
-  graph.insert(ellen_burstyn)
-  graph.insert(anne_hathaway)
-  graph.insert(dennis_quaid)
-  graph.insert(ashton_holmes)
-  graph.insert(steve_buschemi)
-  graph.insert(harvey_keitel)
-  graph.insert(robert_haley)
-  graph.insert(michael_madsen)
-  graph.insert(tim_roth)
-  graph.insert(samuel_jackson)
-  
-  expect(graph.find_kevin_bacon(john_lithgow)).to eq ["Footloose"]
-  expect(graph.find_kevin_bacon(matthew_mcConaughey)).to eq ["Footloose", "Interstellar"]
+         
+      kevin_bacon.film_actor_hash = kevin
+      john_lithgow.film_actor_hash = john
+      sarah_jessica_parker.film_actor_hash = sarah
+      chris_penn.film_actor_hash = chris
+      matthew_mcConaughey.film_actor_hash = matthew
+      ellen_burstyn.film_actor_hash = ellen
+      anne_hathaway.film_actor_hash = anne
+      dennis_quaid.film_actor_hash = dennis
+      ashton_holmes.film_actor_hash = ashton
+      steve_buschemi.film_actor_hash = steve
+      harvey_keitel.film_actor_hash = harvey
+      robert_haley.film_actor_hash = robert
+      michael_madsen.film_actor_hash = michael
+      tim_roth.film_actor_hash = tim
+      samuel_jackson.film_actor_hash = samuel
+      kurt_russell.film_actor_hash = kurt
+      bruce_dern.film_actor_hash = bruce
+      
+      graph.insert(kevin_bacon)
+      graph.insert(john_lithgow)
+      graph.insert(sarah_jessica_parker)
+      graph.insert(chris_penn)
+      graph.insert(matthew_mcConaughey)
+      graph.insert(ellen_burstyn)
+      graph.insert(anne_hathaway)
+      graph.insert(dennis_quaid)
+      graph.insert(ashton_holmes)
+      graph.insert(steve_buschemi)
+      graph.insert(harvey_keitel)
+      graph.insert(robert_haley)
+      graph.insert(michael_madsen)
+      graph.insert(tim_roth)
+      graph.insert(samuel_jackson)
+      graph.insert(kurt_russell)
+      graph.insert(bruce_dern)
+      
+      expect(graph.find_kevin_bacon(john_lithgow)).to eq ["Footloose"]
+      expect(graph.find_kevin_bacon(matthew_mcConaughey)).to eq ["Interstellar","Footloose"]
+      expect(graph.find_kevin_bacon(samuel_jackson)).to eq ["Pulp Fiction","Reservior Dogs","Footloose"]
+      expect(graph.find_kevin_bacon(bruce_dern)).to eq ["The Hateful eight","Pulp Fiction","Reservior Dogs","Footloose"]
+      expect(graph.find_kevin_bacon(kurt_russell)).to eq ["The Hateful eight","Pulp Fiction","Reservior Dogs","Footloose"]
      end
-     
    end
-   
  end

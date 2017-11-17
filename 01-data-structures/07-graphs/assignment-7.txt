@@ -109,3 +109,85 @@
   tim_roth.film_actor_hash = tim
   samuel_jackson.film_actor_hash = samuel
   
+  
+   films = []
+       node_movies = node.film_actor_hash
+       
+       node_movies.each do |key, array|
+           array.each do |x|
+               if x.name == "Kevin Bacon"
+                   films.push(key)
+                   return films
+               end
+           end
+       end
+       
+       movie_title = find_films_of(node)[0]
+       
+      films.push(movie_title)
+      films.push(find_kevin_bacon(node_movies[movie_title][0])[0])
+      
+      
+      describe "# find(node)" do
+      it "properly inserts multiple nodes" do
+      graph.insert(kevin_bacon)
+      graph.insert(john_lithgow)
+      graph.insert(sarah_jessica_parker)
+      graph.insert(chris_penn)
+      expect(graph.nodes).to eq [kevin_bacon, john_lithgow, sarah_jessica_parker, chris_penn]
+    end
+     it "returns the correct node in the graph" do
+       graph.insert(kevin_bacon)
+       graph.insert(john_lithgow)
+       graph.insert(sarah_jessica_parker)
+       graph.insert(chris_penn)
+       expect(graph.find(kevin_bacon)).to eq kevin_bacon
+     end
+   end
+   
+   describe "find_kevin_bacon" do
+     
+     it "properly finds the movies that connect the starting node to Kevin Bacon" do 
+         
+      kevin_bacon.film_actor_hash = kevin
+      john_lithgow.film_actor_hash = john
+      sarah_jessica_parker.film_actor_hash = sarah
+      chris_penn.film_actor_hash = chris
+      matthew_mcConaughey.film_actor_hash = matthew
+      ellen_burstyn.film_actor_hash = ellen
+      anne_hathaway.film_actor_hash = anne
+      dennis_quaid.film_actor_hash = dennis
+      ashton_holmes.film_actor_hash = ashton
+      steve_buschemi.film_actor_hash = steve
+      harvey_keitel.film_actor_hash = harvey
+      robert_haley.film_actor_hash = robert
+      michael_madsen.film_actor_hash = michael
+      tim_roth.film_actor_hash = tim
+      samuel_jackson.film_actor_hash = samuel
+      kurt_russell.film_actor_hash = kurt
+      bruce_dern.film_actor_hash = bruce
+      
+      graph.insert(kevin_bacon)
+      graph.insert(john_lithgow)
+      graph.insert(sarah_jessica_parker)
+      graph.insert(chris_penn)
+      graph.insert(matthew_mcConaughey)
+      graph.insert(ellen_burstyn)
+      graph.insert(anne_hathaway)
+      graph.insert(dennis_quaid)
+      graph.insert(ashton_holmes)
+      graph.insert(steve_buschemi)
+      graph.insert(harvey_keitel)
+      graph.insert(robert_haley)
+      graph.insert(michael_madsen)
+      graph.insert(tim_roth)
+      graph.insert(samuel_jackson)
+      graph.insert(kurt_russell)
+      graph.insert(bruce_dern)
+      expect(graph.find_kevin_bacon(john_lithgow)).to eq ["Footloose"]
+      expect(graph.find_kevin_bacon(matthew_mcConaughey)).to eq ["Interstellar","Footloose"]
+      expect(graph.find_kevin_bacon(samuel_jackson)).to eq ["Pulp Fiction","Reservior Dogs","Footloose"]
+      expect(graph.find_kevin_bacon(bruce_dern)).to eq ["The Hateful eight","Pulp Fiction","Reservior Dogs","Footloose"]
+      
+     end
+   end
