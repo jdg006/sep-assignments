@@ -7,6 +7,38 @@ class Graph
        @root = @nodes[0]
     end
     
+    def find_kev(node)
+        
+        queue = []
+        films = []
+        visited = []
+        
+        visited << node
+        queue << node
+        
+        while queue.any?
+        
+          current_node = queue.shift 
+          
+          if current_node.name == "Kevin Bacon"
+            return films
+          end
+          
+          find_films_of(current_node).each do |title|
+              if title == "Footloose"
+                  films.push(title)
+                  return films
+              end
+                current_node.film_actor_hash[title].each do |actor|
+                  next if visited.include?(actor) || find_films_of(actor).size == 1
+                  queue.push(actor)
+                  visited.push(actor)
+                  films.push(title) if !films.include?(title)
+                end
+            end
+        end
+    end
+    
     def insert(node)
         @nodes.push(node)
     end
@@ -32,11 +64,12 @@ class Graph
             films.flatten!
         else
             films.push(node_movie)
-            
             return films
         end
         
     end
-   
+    
 end
 
+
+  

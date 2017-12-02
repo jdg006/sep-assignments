@@ -154,4 +154,54 @@ RSpec.describe Graph, type: Class do
       expect(graph.find_kevin_bacon(kurt_russell)).to eq ["The Hateful eight","Pulp Fiction","Reservior Dogs","Footloose"]
      end
    end
+   
+   describe "find_kev" do 
+     it "returns a list of films connecting kevin bacon to a particuliar actor node" do
+       kevin_bacon.film_actor_hash = kevin
+      john_lithgow.film_actor_hash = john
+      sarah_jessica_parker.film_actor_hash = sarah
+      chris_penn.film_actor_hash = chris
+      matthew_mcConaughey.film_actor_hash = matthew
+      ellen_burstyn.film_actor_hash = ellen
+      anne_hathaway.film_actor_hash = anne
+      dennis_quaid.film_actor_hash = dennis
+      ashton_holmes.film_actor_hash = ashton
+      steve_buschemi.film_actor_hash = steve
+      harvey_keitel.film_actor_hash = harvey
+      robert_haley.film_actor_hash = robert
+      michael_madsen.film_actor_hash = michael
+      tim_roth.film_actor_hash = tim
+      samuel_jackson.film_actor_hash = samuel
+      kurt_russell.film_actor_hash = kurt
+      bruce_dern.film_actor_hash = bruce
+      
+      graph.insert(kevin_bacon)
+      graph.insert(john_lithgow)
+      graph.insert(sarah_jessica_parker)
+      graph.insert(chris_penn)
+      graph.insert(matthew_mcConaughey)
+      graph.insert(ellen_burstyn)
+      graph.insert(anne_hathaway)
+      graph.insert(dennis_quaid)
+      graph.insert(ashton_holmes)
+      graph.insert(steve_buschemi)
+      graph.insert(harvey_keitel)
+      graph.insert(robert_haley)
+      graph.insert(michael_madsen)
+      graph.insert(tim_roth)
+      graph.insert(samuel_jackson)
+      graph.insert(kurt_russell)
+      graph.insert(bruce_dern)
+      
+      expect(graph.find_kev(john_lithgow)).to eq ["Footloose"]
+      expect(graph.find_kev(sarah_jessica_parker)).to eq ["Footloose"]
+      expect(graph.find_kev(chris_penn)).to eq ["Footloose"]
+      expect(graph.find_kev(matthew_mcConaughey)).to eq ["Interstellar","Footloose"]
+      expect(graph.find_kev(samuel_jackson)).to eq ["Pulp Fiction","Reservior Dogs","Footloose"]
+      expect(graph.find_kev(bruce_dern)).to eq ["The Hateful eight","Pulp Fiction","Reservior Dogs","Footloose"]
+      expect(graph.find_kev(kurt_russell)).to eq ["The Hateful eight","Pulp Fiction","Reservior Dogs","Footloose"]
+      
+       
+     end
+   end
  end
